@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "cf-typegen": {
+      "outputs": [
+        "{projectRoot}/worker-configuration.d.ts"
+      ],
+      "cache": true
+    },
+    "format": {
+      "cache": true
+    },
+    "lint:fix": {
+      "cache": true
+    }
+  },
+  "nxCloudId": "68019ee3ef0e2f6e892b7c21"
+}

@@ -1,0 +1,178 @@
+{
+	"tools": [
+		{
+			"name": "remove_bg",
+			"description": "Remove background from images using AI",
+			"apiEndpoint": "/api/remove-bg",
+			"methodName": "doRemoveBackground",
+			"inputSchema": {
+				"type": "object",
+				"properties": {
+					"image_url": {
+						"type": "string",
+						"description": "The URL of the image to remove background from",
+						"validation": "url"
+					}
+				},
+				"required": ["image_url"]
+			},
+			"requestBodyMapping": {
+				"imageUrl": "image_url"
+			},
+			"zodValidation": {
+				"image_url": {
+					"type": "string",
+					"validation": "url",
+					"errorMessage": "Invalid image URL format"
+				}
+			}
+		},
+		{
+			"name": "image_upscaler",
+			"description": "Upscale images using AI with specified scale factor",
+			"apiEndpoint": "/api/image-upscaler",
+			"methodName": "doUpscaleImage",
+			"inputSchema": {
+				"type": "object",
+				"properties": {
+					"image_url": {
+						"type": "string",
+						"description": "The URL of the image to upscale",
+						"validation": "url"
+					},
+					"scale": {
+						"type": "number",
+						"enum": [2, 4, 8, 16],
+						"description": "Scale factor for upscaling (2, 4, 8, or 16). Default: 2"
+					}
+				},
+				"required": ["image_url"]
+			},
+			"requestBodyMapping": {
+				"imageUrl": "image_url",
+				"scale": "scale"
+			},
+			"zodValidation": {
+				"image_url": {
+					"type": "string",
+					"validation": "url",
+					"errorMessage": "Invalid image URL format"
+				},
+				"scale": {
+					"type": "union",
+					"values": [2, 4, 8, 16],
+					"errorMessage": "Scale must be 2, 4, 8, or 16"
+				}
+			},
+			"defaultValues": {
+				"scale": 2
+			}
+		},
+		{
+			"name": "video_upscaler",
+			"description": "Upscale videos using AI",
+			"apiEndpoint": "/api/video-upscaler",
+			"methodName": "doUpscaleVideo",
+			"inputSchema": {
+				"type": "object",
+				"properties": {
+					"video_url": {
+						"type": "string",
+						"description": "The URL of the video to upscale",
+						"validation": "url"
+					}
+				},
+				"required": ["video_url"]
+			},
+			"requestBodyMapping": {
+				"videoUrl": "video_url"
+			},
+			"zodValidation": {
+				"video_url": {
+					"type": "string",
+					"validation": "url",
+					"errorMessage": "Invalid video URL format"
+				}
+			}
+		},
+		{
+			"name": "image_vectorization",
+			"description": "Convert images to vector format using AI",
+			"apiEndpoint": "/api/image-vectorization",
+			"methodName": "doVectorizeImage",
+			"inputSchema": {
+				"type": "object",
+				"properties": {
+					"image_url": {
+						"type": "string",
+						"description": "The URL of the image to vectorize",
+						"validation": "url"
+					}
+				},
+				"required": ["image_url"]
+			},
+			"requestBodyMapping": {
+				"imageUrl": "image_url"
+			},
+			"zodValidation": {
+				"image_url": {
+					"type": "string",
+					"validation": "url",
+					"errorMessage": "Invalid image URL format"
+				}
+			}
+		},
+		{
+			"name": "image_extends",
+			"description": "Extend images using AI",
+			"apiEndpoint": "/api/image-extends",
+			"methodName": "doExtendImage",
+			"inputSchema": {
+				"type": "object",
+				"properties": {
+					"image_url": {
+						"type": "string",
+						"description": "The URL of the image to extend",
+						"validation": "url"
+					}
+				},
+				"required": ["image_url"]
+			},
+			"requestBodyMapping": {
+				"imageUrl": "image_url"
+			},
+			"zodValidation": {
+				"image_url": {
+					"type": "string",
+					"validation": "url",
+					"errorMessage": "Invalid image URL format"
+				}
+			}
+		},
+		{
+			"name": "image_generator",
+			"description": "Generate images using AI from text prompts",
+			"apiEndpoint": "/api/image-generator",
+			"methodName": "doGenerateImage",
+			"inputSchema": {
+				"type": "object",
+				"properties": {
+					"prompt": {
+						"type": "string",
+						"description": "Text prompt to generate image from"
+					}
+				},
+				"required": ["prompt"]
+			},
+			"requestBodyMapping": {
+				"prompt": "prompt"
+			},
+			"zodValidation": {
+				"prompt": {
+					"type": "string",
+					"errorMessage": "Prompt is required and must be a string"
+				}
+			}
+		}
+	]
+}
